@@ -1,8 +1,15 @@
 import http from "http";
 
 const server = http.createServer((req, res) => {
-  res.writeHead(500, { "Content-Type": "application/json" });
-  res.end(JSON.stringify({ message: "server error" }));
+  res.writeHead(500, { "Content-Type": "text/html" });
+  res.end(`
+    <html>
+        <body>
+            <center>
+                <h1>Hello from the Node.js environment</h1>
+            </center>
+        </body>
+    </html>`);
 });
 
 const PORT = 3000;
