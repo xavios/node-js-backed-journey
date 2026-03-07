@@ -1,4 +1,5 @@
 import http from "http";
+const PORT = process.env.PORT;
 
 const server = http.createServer((req, res) => {
   res.writeHead(500, { "Content-Type": "text/html" });
@@ -12,7 +13,6 @@ const server = http.createServer((req, res) => {
     </html>`);
 });
 
-const PORT = 3000;
 server.listen(PORT, () => {
   console.log(`Server is listening on ${PORT}`);
 });
