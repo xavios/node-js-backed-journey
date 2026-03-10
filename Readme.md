@@ -47,3 +47,15 @@ Mostly used for developing server side and networking applications and APIs.
 Node.js is not good for CPU intensive applications.
 
 Node.js comes with a REPL.
+
+```js
+res.setHeader("HeaderName", "HeaderValue");
+res.writeHead(statusCode, {
+  HeaderName: "HeaderValue",
+});
+```
+
+Useful VSCode extensions:
+
+- UUID Generator
+- Regex Previewer
