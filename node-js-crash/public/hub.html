@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Recipe Hub</title>
+  </head>
+  <body
+    style="
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fafafa;
+      color: #333;
+    "
+  >
+    <!-- Header -->
+    <header style="background: #ff7043; color: #fff; padding: 16px 24px">
+      <h1 style="margin: 0; font-size: 24px">Recipe Hub</h1>
+      <p style="margin: 4px 0 0; font-size: 14px">
+        Your quick stop for simple, tasty recipes
+      </p>
+    </header>
+
+    <!-- Main layout -->
+    <div
+      style="
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        padding: 16px;
+        box-sizing: border-box;
+      "
+    >
+      <!-- Sidebar filters -->
+      <aside
+        style="
+          flex: 0 0 220px;
+          max-width: 220px;
+          background: #fff;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          padding: 12px;
+          box-sizing: border-box;
+        "
+      >
+        <h2 style="margin: 0 0 8px; font-size: 16px">Filters</h2>
+        <label style="display: block; margin-bottom: 6px; font-size: 14px">
+          <span style="display: inline-block; width: 80px">Search:</span>
+          <input
+            type="text"
+            placeholder="e.g. pasta"
+            style="
+              width: 100%;
+              padding: 4px 6px;
+              font-size: 13px;
+              border: 1px solid #ccc;
+              border-radius: 3px;
+              box-sizing: border-box;
+            "
+          />
+        </label>
+        <div style="margin-top: 8px; font-size: 14px">
+          <strong style="font-size: 14px">Category</strong>
+          <div style="margin-top: 4px">
+            <label style="display: block; margin-bottom: 4px">
+              <input type="checkbox" style="margin-right: 4px" /> Breakfast
+            </label>
+            <label style="display: block; margin-bottom: 4px">
+              <input type="checkbox" style="margin-right: 4px" /> Lunch
+            </label>
+            <label style="display: block; margin-bottom: 4px">
+              <input type="checkbox" style="margin-right: 4px" /> Dinner
+            </label>
+            <label style="display: block; margin-bottom: 4px">
+              <input type="checkbox" style="margin-right: 4px" /> Dessert
+            </label>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Recipe list -->
+      <main style="flex: 1 1 260px; min-width: 260px">
+        <!-- Featured recipe -->
+        <section
+          style="
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 12px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+          "
+        >
+          <h2 style="margin: 0 0 8px; font-size: 18px">Featured Recipe</h2>
+          <article>
+            <h3 style="margin: 0 0 4px; font-size: 16px">
+              Creamy Garlic Pasta
+            </h3>
+            <p style="margin: 0 0 8px; font-size: 14px; color: #555">
+              A quick, comforting pasta dish with a rich garlic cream sauce.
+            </p>
+            <p style="margin: 0 0 4px; font-size: 13px">
+              <strong>Time:</strong> 20 min &nbsp; | &nbsp;
+              <strong>Serves:</strong> 2
+            </p>
+            <button
+              style="
+                margin-top: 6px;
+                padding: 6px 10px;
+                font-size: 13px;
+                border: none;
+                border-radius: 3px;
+                background: #ff7043;
+                color: #fff;
+                cursor: pointer;
+              "
+            >
+              View Recipe
+            </button>
+          </article>
+        </section>
+
+        <!-- Recipe cards grid -->
+        <section style="display: flex; flex-wrap: wrap; gap: 12px">
+          <!-- Card 1 -->
+          <article
+            style="
+              flex: 1 1 180px;
+              min-width: 180px;
+              background: #fff;
+              border: 1px solid #ddd;
+              border-radius: 4px;
+              padding: 10px;
+              box-sizing: border-box;
+            "
+          >
+            <h3 style="margin: 0 0 4px; font-size: 15px">Avocado Toast</h3>
+            <p style="margin: 0 0 6px; font-size: 13px; color: #555">
+              Simple breakfast with creamy avocado and crunchy bread.
+            </p>
+            <p style="margin: 0; font-size: 12px">
+              <strong>Time:</strong> 10 min
+            </p>
+          </article>
+
+          <!-- Card 2 -->
+          <article
+            style="
+              flex: 1 1 180px;
+              min-width: 180px;
+              background: #fff;
+              border: 1px solid #ddd;
+              border-radius: 4px;
+              padding: 10px;
+              box-sizing: border-box;
+            "
+          >
+            <h3 style="margin: 0 0 4px; font-size: 15px">One-Pan Chicken</h3>
+            <p style="margin: 0 0 6px; font-size: 13px; color: #555">
+              Easy weeknight dinner with minimal cleanup.
+            </p>
+            <p style="margin: 0; font-size: 12px">
+              <strong>Time:</strong> 30 min
+            </p>
+          </article>
+
+          <!-- Card 3 -->
+          <article
+            style="
+              flex: 1 1 180px;
+              min-width: 180px;
+              background: #fff;
+              border: 1px solid #ddd;
+              border-radius: 4px;
+              padding: 10px;
+              box-sizing: border-box;
+            "
+          >
+            <h3 style="margin: 0 0 4px; font-size: 15px">Chocolate Mug Cake</h3>
+            <p style="margin: 0 0 6px; font-size: 13px; color: #555">
+              Single-serve dessert ready in minutes.
+            </p>
+            <p style="margin: 0; font-size: 12px">
+              <strong>Time:</strong> 5 min
+            </p>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <!-- Footer -->
+    <footer
+      style="
+        text-align: center;
+        font-size: 12px;
+        color: #777;
+        padding: 10px 0;
+        border-top: 1px solid #e0e0e0;
+        margin-top: 8px;
+      "
+    >
+      &copy; 2026 Recipe Hub · Made with simple ingredients
+    </footer>
+  </body>
+</html>
