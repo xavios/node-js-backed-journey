@@ -8,33 +8,69 @@ const users = [
 ];
 
 const loggerMiddleware = (req, res, next) => {
-  process.stdout.write(`${req.method} ${req.url}`);
+  process.stdout.write(`${new Date()} - ${req.method} ${req.url}`);
   next();
-  process.stdout.write(` - ${res.statusCode}\n`);
+  process.stdout.write(
+    `\t\t\t ${res.statusCode} (${res.getHeader("content-type")})\n`,
+  );
+};
+
+const jsonMiddleware = (_, res, next) => {
+  res.setHeader("content-type", "application/json");
+  next();
+};
+
+const allUsersHandler = (_, res) => {
+  res.statusCode = 200;
+  res.end(JSON.stringify(users));
+};
+
+const userHandle = (_, res, user) => {
+  res.statusCode = 200;
+  res.end(JSON.stringify(user));
+};
+
+const userNotFoundHandle = (_, res) => {
+  res.statusCode = 404;
+  res.end(JSON.stringify({ message: "user not found" }));
+};
+
+const pathNotFoundHandler = (_, res) => {
+  res.statusCode = 404;
+  res.end(JSON.stringify({ message: "route not found" }));
+};
+
+const HttpMethod = {
+  GET: "GET",
+  POST: "POST",
+  PUT: "PUT",
+  PATCH: "PATCH",
+  DELETE: "DELETE",
+  OPTIONS: "OPTIONS",
+  HEAD: "HEAD",
 };
 
 const server = createServer((req, res) => {
   loggerMiddleware(req, res, () => {
-    const { url, method } = req;
-    res.statusCode = 200;
-    res.setHeader("content-type", "application/json");
-    if (url === "/api/users" && method === "GET") {
-      res.write(JSON.stringify(users));
-    } else if (url.match(/\/api\/users\/[0-9]+$/) && method === "GET") {
-      const id = url.split("/")[3];
-      const user = users.find((user) => user.id === parseInt(id));
-
-      if (user) {
-        res.write(JSON.stringify(user));
+    jsonMiddleware(req, res, () => {
+      const { url, method } = req;
+      if (url === "/api/users" && method === HttpMethod.GET) {
+        return allUsersHandler(req, res);
+      } else if (
+        url.match(/\/api\/users\/[0-9]+$/) &&
+        method === HttpMethod.GET
+      ) {
+        const id = url.split("/")[3];
+        const user = users.find((user) => user.id === parseInt(id));
+        if (user) {
+          return userHandle(req, res, user);
+        } else {
+          return userNotFoundHandle(req, res);
+        }
       } else {
-        res.statusCode = 404;
-        res.write(JSON.stringify({ message: "user not found" }));
+        return pathNotFoundHandler(req, res);
       }
-    } else {
-      res.statusCode = 404;
-      res.write(JSON.stringify({ message: "route not found" }));
-    }
-    res.end();
+    });
   });
 });
 
