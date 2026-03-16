@@ -33,7 +33,7 @@ const server = http.createServer(async (req, res) => {
         const recipeUUIDIdx = url.lastIndexOf("/");
         const recipeUUID = url.substring(recipeUUIDIdx + 1);
         let buffer = await fs.readFile(
-          path.join(__dirName, "public", "recipe-details.html")
+          path.join(__dirName, "public", "recipe-details.html"),
         );
         let content = buffer.toString();
         content = content.replace("{{ RECIPE_UUID }}", recipeUUID);
@@ -42,14 +42,14 @@ const server = http.createServer(async (req, res) => {
         res.end(content);
         return;
       }
-      res.writeHead(400, { "Content-Type": "text/plain" });
-      res.end(`not found`);
+      res.writeHead(404, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ message: "path not found" }));
       break;
   }
 });
 
 server.listen(PORT, () => {
-  console.log(`Server is listening on ${PORT}`);
+  console.log(`Server is listening on http://localhost:${PORT}/ url`);
 });
 
 async function loadPage(res, fileName) {
